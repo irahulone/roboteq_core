@@ -13,7 +13,7 @@ class Publisher(Node):
     def __init__(self, connection):
         super().__init__('roboteq_drive_inverter_pub')
         self.get_stat = Status(connection)
-        self.publisher = self.create_publisher(Float32MultiArray, "mr1/di_velocity", 10)
+        self.publisher = self.create_publisher(Float32MultiArray, "mr1/du_velocity", 10)
         di_velocity_period = 0.5  # seconds
         self.timer = self.create_timer(di_velocity_period,
                                        self.di_velocity_callback,

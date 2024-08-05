@@ -1,3 +1,8 @@
+import logging
+
+logger = logging.getLogger()
+logger.setLevel(logging.WARNING)
+
 RETRIES = 6
 
 
@@ -49,8 +54,12 @@ class Status:
             resp = "".join(c for c in resp if c.isdigit() or c == ' ' or c == '-')
             resp = resp.split(' ')
             if resp and len(resp) > 2:
-                velocity_left_wheels = float(resp[1])
-                velocity_right_wheels = float(resp[2])
+                try:
+                    velocity_left_wheels = float(resp[1])
+                    velocity_right_wheels = float(resp[2])
+                except ValueError as e:
+                    logger.warning(f"Except caught: {e}\nVelocity reading: {resp}\n")
+                    pass
                 break
 
         return velocity_left_wheels, velocity_right_wheels
