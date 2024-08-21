@@ -1,8 +1,8 @@
 from setuptools import find_packages, setup
 
-package_name = 'roboteq_package'
-publishers = 'roboteq_package/publishers'
-subscribers = 'roboteq_package/subscribers'
+package_name = 'roboteq_core'
+publishers = 'roboteq_core/publishers'
+subscribers = 'roboteq_core/subscribers'
 
 setup(
     name=package_name,
@@ -22,7 +22,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'roboteq_interface = roboteq_package.main:main'
+            'roboteq_interface = roboteq_core.main:main'
         ],
     },
 )
